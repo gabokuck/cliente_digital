@@ -804,7 +804,9 @@ class DetalleCreditoWidget extends StatelessWidget {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: (){
-                            print('boton funcionando correctamente');
+                            Get.dialog(
+                              AlertaDetallesPagosWidget()
+                            );
                           },
                           child: Container(
                             alignment: Alignment.center,
@@ -1040,6 +1042,72 @@ class DetalleCreditoWidget extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class AlertaDetallesPagosWidget extends StatelessWidget {
+  const AlertaDetallesPagosWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Align(
+        child: Container(
+          alignment: Alignment.center,
+          height: Get.size.height * 0.5,
+          width: Get.size.width * 0.5,
+          color: Colors.white,
+          child: ListView(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    color: Constantes.colorPrimario,
+                    border: Border.all(
+                      color: Colors.transparent,
+                    )
+                ),
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.only(left: 15),
+                width: double.maxFinite,
+                height: 40,
+                child: Row(
+                  children: [
+                    Text('Detalles de Pagos', style: GoogleFonts.montserrat(color: Colors.white, fontWeight: FontWeight.bold),),
+                  ],
+                ),
+              ),
+              Container(
+                color: Colors.red,
+                height: double.maxFinite,
+                width: double.maxFinite,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        color: Colors.red,
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        color: Colors.blue,
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        color: Colors.yellow,
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
